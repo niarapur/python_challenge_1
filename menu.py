@@ -117,13 +117,17 @@ while place_order:
                         "Price": value
                     }
                     i += 1
-            # 2. Ask customer to input menu item number
+    # 2. Ask customer to input menu item number
+    menu_selection = input("Type selection number: ")
 
-
-            # 3. Check if the customer typed a number
-
-                # Convert the menu selection to an integer
-
+    # 3. Check if the customer typed a number                            
+    if menu_selection.isdigit():    
+    # Check if the customer's input is a valid option
+        if int(menu_selection) in menu_items.keys():
+            # Save the menu category name to a variable
+            menu_selection_name = menu_items[int(menu_selection)]
+            # Print out the menu category name they selected
+            print(f"You selected {menu_selection_name}")
 
                 # 4. Check if the menu selection is in the menu items
 
@@ -143,13 +147,20 @@ while place_order:
 
 
                 # Tell the customer they didn't select a menu option
-
         else:
-            # Tell the customer they didn't select a menu option
-            print(f"{menu_category} was not a menu option.")
+        # Tell the customer they didn't select a menu option
+            print(f"{menu_selection} was not a menu selection option.")
     else:
-        # Tell the customer they didn't select a number
-        print("You didn't select a number.")
+        # Tell the customer they didn't select the correct number
+        print(f"You did not select a number from the above options")
+    
+    
+    else:
+    # Tell the customer they didn't select a menu option
+    print(f"{menu_category} was not a menu option.")
+    else:
+    # Tell the customer they didn't select a number
+    print("You didn't select a number.")
 
     while True:
         # Ask the customer if they would like to order anything else
