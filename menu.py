@@ -83,84 +83,92 @@ while place_order:
 
     # Check if the customer's input is a number
     if menu_category.isdigit():
+        
         # Check if the customer's input is a valid option
         if int(menu_category) in menu_items.keys():
             # Save the menu category name to a variable
             menu_category_name = menu_items[int(menu_category)]
-            # Print out the menu category name they selected
-            print(f"You selected {menu_category_name}")
+                # Print out the menu category name they selected
+                print(f"You selected {menu_category_name}")
 
-            # Print out the menu options from the menu_category_name
-            print(f"What {menu_category_name} item would you like to order?")
-            i = 1
-            menu_items = {}
-            print("Item # | Item name                | Price")
-            print("-------|--------------------------|-------")
-            for key, value in menu[menu_category_name].items():
-                # Check if the menu item is a dictionary to handle differently
-                if type(value) is dict:
-                    for key2, value2 in value.items():
-                        num_item_spaces = 24 - len(key + key2) - 3
-                        item_spaces = " " * num_item_spaces
-                        print(f"{i}      | {key} - {key2}{item_spaces} | ${value2}")
-                        menu_items[i] = {
+                # Print out the menu options from the menu_category_name
+                print(f"What {menu_category_name} would you like to order?")
+                i = 1
+                menu_items = {}
+                print("Item # | Item name                | Price")
+                print("-------|--------------------------|-------")
+                for key, value in menu[menu_category_name].items():
+                    # Check if the menu item is a dictionary to handle differently
+                    if type(value) is dict:
+                        for key2, value2 in value.items():
+                            num_item_spaces = 24 - len(key + key2) - 3
+                            item_spaces = " " * num_item_spaces
+                            print(f"{i}      | {key} - {key2}{item_spaces} | ${value2}")
+                            menu_items[i] = {
                             "Item name": key + " - " + key2,
                             "Price": value2
                         }
                         i += 1
-                else:
-                    num_item_spaces = 24 - len(key)
-                    item_spaces = " " * num_item_spaces
-                    print(f"{i}      | {key}{item_spaces} | ${value}")
-                    menu_items[i] = {
-                        "Item name": key,
-                        "Price": value
-                    }
-                    i += 1
-    # 2. Ask customer to input menu item number
-    menu_selection = input("Type selection number: ")
+                    else:
+                        num_item_spaces = 24 - len(key)
+                        item_spaces = " " * num_item_spaces
+                            print(f"{i}      | {key}{item_spaces} | ${value}")
+                        menu_items[i] = {
+                            "Item name": key,
+                            "Price": value
+                        }
+                        i += 1
+                    
+                    # 2. Ask customer to input menu item number
+                    menu_selection = input("Type selection number: ")
+                    # 3.Check if the customer typed a number
+                    if menu_selection.isdigit():    
+                        # Check if the customer's input is a valid option
+                        if int(menu_selection) in menu_items.keys():
+                            # Save the menu category name to a variable
+                            menu_selection_name = menu_items[int(menu_selection)]
+                            # Print out the menu category name they selected
+                            (f"You selected {menu_selection_name}")
 
-    # 3. Check if the customer typed a number                            
-    if menu_selection.isdigit():    
-    # Check if the customer's input is a valid option
-        if int(menu_selection) in menu_items.keys():
-            # Save the menu category name to a variable
-            menu_selection_name = menu_items[int(menu_selection)]
-            # Print out the menu category name they selected
-            print(f"You selected {menu_selection_name}")
+                            # 4. Check if the menu selection is in the menu items
 
-                # 4. Check if the menu selection is in the menu items
-
-                    # Store the item name as a variable
-
-
-                    # Ask the customer for the quantity of the menu item
+                                # Store the item name as a variable
 
 
-                    # Check if the quantity is a number, default to 1 if not
+                                # Ask the customer for the quantity of the menu item
 
 
-                    # Add the item name, price, and quantity to the order list
+                                # Check if the quantity is a number, default to 1 if not
 
 
-                    # Tell the customer that their input isn't valid
+                                # Add the item name, price, and quantity to the order list
+
+
+                                # Tell the customer that their input isn't valid
 
 
                 # Tell the customer they didn't select a menu option
+                        else:
+                            # Tell the customer they didn't select a menu option
+                            print(f"{menu_selection} was not a menu selection option.")
+                    else:
+                        # Tell the customer you did not print a number
+                        print(f"You did not select a number from the above options")
+    
+    
         else:
-        # Tell the customer they didn't select a menu option
-            print(f"{menu_selection} was not a menu selection option.")
-    else:
-        # Tell the customer they didn't select the correct number
-        print(f"You did not select a number from the above options")
-    
-    
+            # Tell the customer they didn't select a menu option
+            print(f"{menu_category} was not a menu option.")
     else:
     # Tell the customer they didn't select a menu option
     print(f"{menu_category} was not a menu option.")
+    
     else:
     # Tell the customer they didn't select a number
     print("You didn't select a number.")
+else:
+        # Tell the customer they didn't select a number
+        print("You didn't select a number.")
 
     while True:
         # Ask the customer if they would like to order anything else
