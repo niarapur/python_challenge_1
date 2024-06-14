@@ -135,12 +135,18 @@ while place_order:
                 menu_sel=int(menu_selection)
                 # 4. Check if the menu selection is in the menu items
                 menu_values={}
-                
+
                 p = 1
                 for key, value in menu[menu_category_name].items():
-                    print(f"{p}: {key}")
-                    menu_values[p]=key
-                    p+= 1
+                    if type(value) is dict:
+                        for key2, value2 in value.items():
+                            #print(f"{p}: {key} - {key2}")
+                            menu_values[p]=key + " - " + key2
+                            p+= 1
+                    else:
+                        menu_values[p]=key
+                        p+= 1 
+                        
 
                 if menu_sel in menu_values.keys():
                     # Store the item name as a variable
@@ -148,7 +154,7 @@ while place_order:
                     print(f"you selected {menu_selection_name}")
 
                     # Ask the customer for the quantity of the menu item
-
+                    sel_qty = input(f"How Many {menu_selection_name}(s) would you like?: ")
 
                     # Check if the quantity is a number, default to 1 if not
 
