@@ -57,18 +57,7 @@ menu = {
 # 1. Set up order list. Order list will store a list of dictionaries for
 # menu item name, item price, and quantity ordered
 
-order = [
-  {
-    "Item name": "string",
-    "Price": float,
-    "Quantity": int
-  },
-  {
-    "Item name": "string",
-    "Price": float,
-    "Quantity": int
-  },
-]
+order = []
 
 # Launch the store and present a greeting to the customer
 print("Welcome to the variety food truck.")
@@ -144,24 +133,12 @@ while place_order:
             if menu_selection.isdigit(): 
                 # Convert the menu selection to an integer
                 menu_sel=int(menu_selection)
-                # 4. Check if the menu selection is in the menu items
-                menu_values={}
-                p = 1
-                for key, value in menu[menu_category_name].items():
-                    if type(value) is dict:
-                        for key2, value2 in value.items():
-                            #print(f"{p}: {key} - {key2}")
-                            menu_values[p]=key2 +" " + key
-                            p+= 1
-                    else:
-                        menu_values[p]=key
-                        p+= 1 
-                        
+                # 4. Check if the menu selection is in the menu items      
 
                 if menu_sel in menu_items.keys():
                     # Store the item name as a variable
-                    #menu_selection_name= menu_values[int(menu_selection)]
                     menu_selection_name = menu_items[menu_sel]["Item name"]
+                    menu_price = menu_items[menu_sel]["Price"]
                     print(f"you selected {menu_selection_name}")
 
                     # Ask the customer for the quantity of the menu item
@@ -176,7 +153,13 @@ while place_order:
                     print(f"you selected {quantity} orders of {menu_selection_name}")
                     
                     # Add the item name, price, and quantity to the order list
-                      #order.append(
+                    order.append({
+                        "Item name": menu_selection_name,
+                        "Price": menu_price,
+                        "Quantity": quantity
+                        })
+                    
+                    print(f"Your order summary is {order}")
 
                     # Tell the customer that their input isn't valid
                 else:
