@@ -122,11 +122,7 @@ while place_order:
                         "Price": value
                     }
                     i += 1
-            
-            
-            
-            
-            
+
             # 2. Ask customer to input menu item number
             menu_selection = input("Type selection number: ")
             # 3. Check if the customer typed a number
@@ -150,7 +146,7 @@ while place_order:
                     else:
                         quantity=1
                     
-                    print(f"you selected {quantity} orders of {menu_selection_name}")
+                    print(f"you selected {quantity} order(s) of {menu_selection_name}")
                     
                     # Add the item name, price, and quantity to the order list
                     order.append({
@@ -167,7 +163,7 @@ while place_order:
 
                 # Tell the customer they didn't select a menu option
             else:
-                print(f"That is not a valid number - try again")
+                print(f"That is not a valid menu category number - try again")
         else:
             # Tell the customer they didn't select a menu option
             print(f"{menu_category} was not a menu option.")
@@ -180,10 +176,23 @@ while place_order:
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
 
         # 5. Check the customer's input
+    
+        match keep_ordering.upper():
+           # Keep ordering
+            case 'Y':
+                place_order=True
+                break
+             # Exit the keep ordering question loop
+            case 'N':
+                place_order=False
+                print(f"thank you for your order")
+                break
+            case _:
+                print(f"That is not a valid input - type 'Y' to keep ordering or 'N' to complete order")
 
-                # Keep ordering
+             
 
-                # Exit the keep ordering question loop
+               
 
                 # Complete the order
 
