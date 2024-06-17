@@ -1,5 +1,5 @@
 # python_challenge_1: 1st Challenge home work for Python Programming
-#The code s to generare an order from a prefilled menu and print out the order summary and invoice.
+The code s to generare an order from a prefilled menu and print out the order summary and invoice.
 - Starter code was provided  to print the menu of the customer. 
 - Comments were included where blanks needed to be filled out
 - Menu category stores the menu 1st level category for selection
