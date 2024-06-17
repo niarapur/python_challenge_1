@@ -6,6 +6,7 @@
 - menu selection was created to house the customers input on what as needed
 -  Orders are appended to the list "order'
 - Output prints out the order summary and the invoice with the sum total of the amount needed to be paid
-- The customer's order is printed with the item name, price, and quantity. 
+- The customer's order is printed with the item name, price, and quantity.
+- the total is printent at the end of the bill summing both price*quantity of the individual orders
 
 
