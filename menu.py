@@ -200,7 +200,8 @@ while place_order:
 print("This is what we are preparing for you.\n")
 
 # Uncomment the following line to check the structure of the order
-print(order)
+ #print(order)
+
 print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
 # 6. Loop through the items in the customer's order
@@ -219,8 +220,27 @@ for entry in order:
     price_spaces= " " * Price_spc
     quantity_spaces = " " * quant_spc
     # 10. Print the item name, price, and quantity
-    print(f"{item}{item_spaces} | ${price1}{price_spaces} | {qty}{quantity_spaces}")
+
+    # could not replicate the right answer using calculated spaces 
+    #googled how to use ljust and added that into the code to format item names to fit within 26 spaces
+
+    item_p = item.ljust(26)
+    print(f"{item_p}|${price1}{price_spaces}|{qty}{quantity_spaces}")
+
 
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
+totcost=0
+for entry in order:
+    price1= entry["Price"]
+    qty=entry["Quantity"]
+    cost= price1*qty
+    totcost+= cost
+    cost_str=str(totcost)
+    costspc= 46-len(cost_str)-11
+    cost_space= " " *costspc
+print("----------------------------------------------")
+print(f"Total cost:{cost_space}${totcost}")
+print("----------------------------------------------")
+
