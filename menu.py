@@ -180,53 +180,46 @@ while place_order:
         match keep_ordering.upper():
            # Keep ordering
             case 'Y':
-                place_order=True
+                place_order= True
                 break
              # Exit the keep ordering question loop
+              # Complete the order
             case 'N':
-                place_order=False
-                print(f"thank you for your order")
-                break
-            case _:
-                print(f"That is not a valid input - type 'Y' to keep ordering or 'N' to complete order")
-
-             
-
-               
-
-                # Complete the order
-
+                place_order= False
                 # Since the customer decided to stop ordering, thank them for
                 # their order
-
+                print(f"thank you for your order")
                 # Exit the keep ordering question loop
-
-
+                break
                 # Tell the customer to try again
+            case _:
+                print(f"That is not a valid input - type 'Y' to keep ordering or 'N' to complete order")
 
 
 # Print out the customer's order
 print("This is what we are preparing for you.\n")
 
 # Uncomment the following line to check the structure of the order
-#print(order)
-
+print(order)
 print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
-
 # 6. Loop through the items in the customer's order
-
+for entry in order:
     # 7. Store the dictionary items as variables
-
-
+    item =entry["Item name"]
+    price1= entry["Price"]
+    qty=entry["Quantity"]
+    cost= price1*qty
     # 8. Calculate the number of spaces for formatted printing
-
-
+    item_name_spc = 26 - len("Item name")
+    Price_spc= 8 - len("price")
+    quant_spc = 10 - len("quantity")
     # 9. Create space strings
-
-
+    item_spaces = " " * item_name_spc
+    price_spaces= " " * Price_spc
+    quantity_spaces = " " * quant_spc
     # 10. Print the item name, price, and quantity
-
+    print(f"{item}{item_spaces} | ${price1}{price_spaces} | {qty}{quantity_spaces}")
 
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
